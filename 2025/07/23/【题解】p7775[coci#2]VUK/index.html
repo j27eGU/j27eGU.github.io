@@ -19,22 +19,22 @@
   <meta name="author" content="j27eGU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="感谢@xiejinghan在赛时给我分享思路。 题目链接：lnk 题意简述在一个二维矩阵上面，从V到J的路径中，求离+的最短距离。 解题步骤题目中写离它最近的树的距离的最小值，很明显就能想到二分。 在读入数据时，用startx和starty标记起点的坐标。">
+    <meta name="description" content="感谢@xiejinghan在赛时给我分享思路。 题目链接：lnk 题意简述在一个二维矩阵上面，从V到J的路径中，求离+的最短距离。 解题步骤题目中写离它最近的树的距离的最小值，很明显就能想到二分。 在读入数据时，用startx和starty标记起点的坐标。 同时，用endx和endy标记窝的坐标。 接着，使用bfs的方式，对dis_to_tree进行处理。 （顾名思义，dis_to_tree[i]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="#2]VUK">
-<meta property="og:url" content="http://j27egu.github.io/2025/07/23/2-VUK/index.html">
+<meta property="og:title" content="【题解】p7775[coci#2]VUK">
+<meta property="og:url" content="http://j27egu.github.io/2025/07/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91p7775[coci#2]VUK/index.html">
 <meta property="og:site_name" content="j27eGU&#39;s BLOG">
-<meta property="og:description" content="感谢@xiejinghan在赛时给我分享思路。 题目链接：lnk 题意简述在一个二维矩阵上面，从V到J的路径中，求离+的最短距离。 解题步骤题目中写离它最近的树的距离的最小值，很明显就能想到二分。 在读入数据时，用startx和starty标记起点的坐标。">
+<meta property="og:description" content="感谢@xiejinghan在赛时给我分享思路。 题目链接：lnk 题意简述在一个二维矩阵上面，从V到J的路径中，求离+的最短距离。 解题步骤题目中写离它最近的树的距离的最小值，很明显就能想到二分。 在读入数据时，用startx和starty标记起点的坐标。 同时，用endx和endy标记窝的坐标。 接着，使用bfs的方式，对dis_to_tree进行处理。 （顾名思义，dis_to_tree[i]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-23T15:12:35.000Z">
-<meta property="article:modified_time" content="2025-07-23T15:19:55.951Z">
+<meta property="article:modified_time" content="2025-07-23T15:41:16.422Z">
 <meta property="article:author" content="j27eGU">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>#2]VUK - j27eGU&#39;s BLOG</title>
+  <title>【题解】p7775[coci#2]VUK - j27eGU&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="#2]VUK"></span>
+            <span id="subtitle" data-typed-text="【题解】p7775[coci#2]VUK"></span>
           
         </div>
 
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          90 字
+          759 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -271,7 +271,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">#2]VUK</h1>
+            <h1 id="seo-header">【题解】p7775[coci#2]VUK</h1>
             
             
               <div class="markdown-body">
@@ -281,6 +281,20 @@
 <h1 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h1><p>在一个二维矩阵上面，从<code>V</code>到<code>J</code>的路径中，求离<code>+</code>的最短距离。</p>
 <h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><p>题目中写<code>离它最近的树的距离的最小值</code>，很明显就能想到二分。</p>
 <p>在读入数据时，用<code>startx</code>和<code>starty</code>标记起点的坐标。</p>
+<p>同时，用<code>endx</code>和<code>endy</code>标记窝的坐标。</p>
+<p>接着，使用bfs的方式，对<code>dis_to_tree</code>进行处理。</p>
+<p>（顾名思义，dis_to_tree[i][j]就是坐标i,j的点到最近的一棵树的最短距离）</p>
+<p>然后特判，如果起点和窝的位置重合，就直接输出dis_to_tree[startx][starty]。</p>
+<p>接下来使用二分的技巧，l&#x3D;0，r&#x3D;1000，然后while循环二分查找直到l&gt;&#x3D;r。</p>
+<p>如何查找？</p>
+<p>就是用双向广搜，也就是从起点和窝同时进行广搜。</p>
+<p>在进行双向bfs的过程中，vis的状态变成了0,1,2。</p>
+<p>其中的0表示没有访问到，1表示这是起点过来访问到的，2表示窝过来访问到的。</p>
+<p>bfs直到下一个点的状态（vis[nx][ny]）与当前点的状态（vis[x][y]）不相同，返回1。</p>
+<p>（在这之前一定要判断vis[nx][ny]!&#x3D;0）</p>
+<p>否则返回0。</p>
+<h1 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAXN=<span class="hljs-number">510</span>;<br><span class="hljs-type">int</span> n,m,dis_to_tree[MAXN][MAXN],startx,starty,endx,endy;<br><span class="hljs-type">int</span> vis[MAXN][MAXN];<br><span class="hljs-type">char</span> mp[MAXN][MAXN];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span><br>&#123;<br>	<span class="hljs-type">int</span> x,y,to_tree_dis,type;<br>&#125;;<br><span class="hljs-type">int</span> dx[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>&#125;,dy[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">search1</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">memset</span>(dis_to_tree,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(dis_to_tree));<br>	<span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));<br>	queue&lt;node&gt; q;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(mp[i][j]==<span class="hljs-string">&#x27;+&#x27;</span>)<br>			&#123;<br>				dis_to_tree[i][j]=<span class="hljs-number">0</span>;<br>				vis[i][j]=<span class="hljs-number">1</span>;<br>				q.<span class="hljs-built_in">push</span>(&#123;i,j,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>	&#123;<br>		node top=q.<span class="hljs-built_in">front</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> x=top.x,y=top.y;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)<br>		&#123;<br>			<span class="hljs-type">int</span> nx=x+dx[i],ny=y+dy[i];<br>			<span class="hljs-keyword">if</span>(nx&gt;=<span class="hljs-number">1</span>&amp;&amp;ny&gt;=<span class="hljs-number">1</span>&amp;&amp;nx&lt;=n&amp;&amp;ny&lt;=m&amp;&amp;!vis[nx][ny])<br>			&#123;<br>				dis_to_tree[nx][ny]=top.to_tree_dis<span class="hljs-number">+1</span>;<br>				vis[nx][ny]=<span class="hljs-number">1</span>;<br>				q.<span class="hljs-built_in">push</span>(&#123;nx,ny,dis_to_tree[nx][ny],<span class="hljs-number">0</span>&#125;);<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> dis)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">if</span>(dis==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>	<span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));<br>	queue&lt;node&gt; q;<br>	<span class="hljs-keyword">if</span>(dis_to_tree[startx][starty]&lt;dis||dis_to_tree[endx][endy]&lt;dis) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	q.<span class="hljs-built_in">push</span>(&#123;startx,starty,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;);<br>	q.<span class="hljs-built_in">push</span>(&#123;endx,endy,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>&#125;);<br>	vis[startx][starty]=<span class="hljs-number">1</span>;<br>	vis[endx][endy]=<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>	&#123;<br>		node top=q.<span class="hljs-built_in">front</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> x=top.x,y=top.y;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)<br>		&#123;<br>			<span class="hljs-type">int</span> nx=x+dx[i],ny=y+dy[i];<br>			<span class="hljs-keyword">if</span>(nx&lt;<span class="hljs-number">1</span>||ny&lt;<span class="hljs-number">1</span>||nx&gt;n||ny&gt;m) <span class="hljs-keyword">continue</span>;<br>			<span class="hljs-keyword">if</span>(dis_to_tree[nx][ny]&lt;dis) <span class="hljs-keyword">continue</span>;<br>			<span class="hljs-keyword">if</span>(!vis[nx][ny])<br>			&#123;<br>				vis[nx][ny]=top.type;<br>				q.<span class="hljs-built_in">push</span>(&#123;nx,ny,<span class="hljs-number">0</span>,top.type&#125;);<br>			&#125;<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(vis[nx][ny]!=top.type)<br>			&#123;<br>				<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cin&gt;&gt;n&gt;&gt;m;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)<br>		&#123;<br>			cin&gt;&gt;mp[i][j];<br>			<span class="hljs-keyword">if</span>(mp[i][j]==<span class="hljs-string">&#x27;V&#x27;</span>) startx=i,starty=j;<br>			<span class="hljs-keyword">if</span>(mp[i][j]==<span class="hljs-string">&#x27;J&#x27;</span>) endx=i,endy=j;<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">search1</span>();<br>	<span class="hljs-keyword">if</span>(startx==endx&amp;&amp;starty==endy)<br>	&#123;<br>		cout&lt;&lt;dis_to_tree[startx][starty]&lt;&lt;endl;<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	&#125;<br>	<span class="hljs-type">int</span> l=<span class="hljs-number">0</span>,r=<span class="hljs-number">1000</span>;<br>	<span class="hljs-keyword">while</span>(l&lt;r)<br>	&#123;<br>		<span class="hljs-type">int</span> mid=(l+r<span class="hljs-number">+1</span>)&gt;&gt;<span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">solve</span>(mid)) l=mid;<br>		<span class="hljs-keyword">else</span> r=mid<span class="hljs-number">-1</span>;<br>	&#125;<br>	cout&lt;&lt;l&lt;&lt;endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -305,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>#2]VUK</div>
-      <div>http://j27egu.github.io/2025/07/23/2-VUK/</div>
+      <div>【题解】p7775[coci#2]VUK</div>
+      <div>http://j27egu.github.io/2025/07/23/【题解】p7775[coci#2]VUK/</div>
     </div>
     <div class="license-meta">
       
