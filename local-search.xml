@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>#2]VUK</title>
+    <link href="/2025/07/23/2-VUK/"/>
+    <url>/2025/07/23/2-VUK/</url>
+    
+    <content type="html"><![CDATA[<p>感谢@<a href="https://www.luogu.com.cn/user/1392775">xiejinghan</a><del>在赛时</del>给我分享思路。</p><p>题目链接：<a href="http://luogu.com.cn/problem/P7775">lnk</a></p><h1 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h1><p>在一个二维矩阵上面，从<code>V</code>到<code>J</code>的路径中，求离<code>+</code>的最短距离。</p><h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><p>题目中写<code>离它最近的树的距离的最小值</code>，很明显就能想到二分。</p><p>在读入数据时，用<code>startx</code>和<code>starty</code>标记起点的坐标。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>题解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>欢迎来到我的博客</title>
     <link href="/2025/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     <url>/2025/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
