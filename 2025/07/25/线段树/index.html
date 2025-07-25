@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png">
 <meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png">
 <meta property="article:published_time" content="2025-07-25T03:01:47.000Z">
-<meta property="article:modified_time" content="2025-07-25T03:48:49.512Z">
+<meta property="article:modified_time" content="2025-07-25T03:59:31.042Z">
 <meta property="article:author" content="j27eGU">
 <meta property="article:tag" content="学习·文化课">
 <meta name="twitter:card" content="summary_large_image">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.3k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -330,6 +330,10 @@
 <p>若要查询区间[2,5]，那我们只需要查询[2,2]，[3,3]，[4,5]，三个区间。[4,4]，[5,5]不需要查找，包含在[4,5]中了。</p>
 <p>[2,5]一共五个区间，而且发现[4,5]这个区间已经包含了[4,4]，[5,5]两个子树的信息，所以需要查询的区间只有三个，是[2,2]，[3,3]，[4,5]。</p>
 <p>可以通过更新的思路想出来查询的思路，从根节点开始往下递归，时间复杂度O(logN)。</p>
+<p>线段树的区间更新使用差分的思想。</p>
+<p>传统上，对于区间[l,r]，可能每次都更新区间中的每个值，更新的复杂度将会是O(N log N)，造成浪费。</p>
+<p>在进行区间更新是，引用lazy标记，提高更新的效率。</p>
+<p>如果当前区间被需要修改的目标区间完全覆盖，则在被更新节点上打lazy标记，此区间不向下传导，这样的搭配使区间更新的操作和区间查询类似，复杂度为O(log N)。</p>
 
                 
               </div>
