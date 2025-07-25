@@ -19,22 +19,27 @@
   <meta name="author" content="j27eGU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="感谢@xiejinghan在赛时给我分享思路。 题目链接：lnk 题意简述在一个二维矩阵上面，从V到J的路径中，求离+的最短距离。 解题步骤题目中写离它最近的树的距离的最小值，很明显就能想到二分。 在读入数据时，用startx和starty标记起点的坐标。 同时，用endx和endy标记窝的坐标。 接着，使用bfs的方式，对dis_to_tree进行处理。 （顾名思义，dis_to_tree[i]">
+    <meta name="description" content="线段树线段树是一种二叉搜索树，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶子节点。 使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度未O(log N)。而未优化的空间复杂度为2N，实际应用是一般还要开4N，的数组以免越界，因此有时需要离散化让空间压缩。 树的形态一般如下：（引用自OI-WIKI）   对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】p7775">
-<meta property="og:url" content="http://j27egu.github.io/2025/07/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P7775/index.html">
+<meta property="og:title" content="【学习笔记】线段树">
+<meta property="og:url" content="http://j27egu.github.io/2025/07/25/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
 <meta property="og:site_name" content="j27eGU&#39;s BLOG">
-<meta property="og:description" content="感谢@xiejinghan在赛时给我分享思路。 题目链接：lnk 题意简述在一个二维矩阵上面，从V到J的路径中，求离+的最短距离。 解题步骤题目中写离它最近的树的距离的最小值，很明显就能想到二分。 在读入数据时，用startx和starty标记起点的坐标。 同时，用endx和endy标记窝的坐标。 接着，使用bfs的方式，对dis_to_tree进行处理。 （顾名思义，dis_to_tree[i]">
+<meta property="og:description" content="线段树线段树是一种二叉搜索树，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶子节点。 使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度未O(log N)。而未优化的空间复杂度为2N，实际应用是一般还要开4N，的数组以免越界，因此有时需要离散化让空间压缩。 树的形态一般如下：（引用自OI-WIKI）   对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-23T15:12:35.000Z">
-<meta property="article:modified_time" content="2025-07-24T14:04:22.615Z">
+<meta property="og:image" content="https://oi-wiki.org/ds/images/segt1.svg">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8e64e93c7a590efe8490c43c052406df.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png">
+<meta property="article:published_time" content="2025-07-25T03:01:47.000Z">
+<meta property="article:modified_time" content="2025-07-25T13:42:34.648Z">
 <meta property="article:author" content="j27eGU">
-<meta property="article:tag" content="题解">
+<meta property="article:tag" content="学习·文化课">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://oi-wiki.org/ds/images/segt1.svg">
   
   
   
-  <title>【题解】p7775 - j27eGU&#39;s BLOG</title>
+  <title>【学习笔记】线段树 - j27eGU&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【题解】p7775"></span>
+            <span id="subtitle" data-typed-text="【学习笔记】线段树"></span>
           
         </div>
 
@@ -211,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-07-23 23:12" pubdate>
-          2025年7月23日 晚上
+        <time datetime="2025-07-25 11:01" pubdate>
+          2025年7月25日 上午
         </time>
       </span>
     
@@ -223,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          759 字
+          1.3k 字
         
       </span>
     
@@ -234,7 +239,7 @@
         
         
         
-          7 分钟
+          11 分钟
         
       </span>
     
@@ -271,30 +276,64 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【题解】p7775</h1>
+            <h1 id="seo-header">【学习笔记】线段树</h1>
             
             
               <div class="markdown-body">
                 
-                <p>感谢@<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/1392775">xiejinghan</a><del>在赛时</del>给我分享思路。</p>
-<p>题目链接：<a target="_blank" rel="noopener" href="http://luogu.com.cn/problem/P7775">lnk</a></p>
-<h1 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h1><p>在一个二维矩阵上面，从<code>V</code>到<code>J</code>的路径中，求离<code>+</code>的最短距离。</p>
-<h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><p>题目中写<code>离它最近的树的距离的最小值</code>，很明显就能想到二分。</p>
-<p>在读入数据时，用<code>startx</code>和<code>starty</code>标记起点的坐标。</p>
-<p>同时，用<code>endx</code>和<code>endy</code>标记窝的坐标。</p>
-<p>接着，使用bfs的方式，对<code>dis_to_tree</code>进行处理。</p>
-<p>（顾名思义，dis_to_tree[i][j]就是坐标[i][j]的点到最近的一棵树的最短距离）</p>
-<p>然后特判，如果起点和窝的位置重合，就直接输出dis_to_tree[startx][starty]。</p>
-<p>接下来使用二分的技巧，l&#x3D;0，r&#x3D;1000，然后while循环二分查找直到l&gt;&#x3D;r。</p>
-<p>如何查找？</p>
-<p>就是用双向广搜，也就是从起点和窝同时进行广搜。</p>
-<p>在进行双向bfs的过程中，vis的状态变成了0,1,2。</p>
-<p>其中的0表示没有访问到，1表示这是起点过来访问到的，2表示窝过来访问到的。</p>
-<p>bfs直到下一个点的状态（vis[nx][ny]）与当前点的状态（vis[x][y]）不相同，返回1。</p>
-<p>（在这之前一定要判断vis[nx][ny]!&#x3D;0）</p>
-<p>否则返回0。</p>
-<h1 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAXN=<span class="hljs-number">510</span>;<br><span class="hljs-type">int</span> n,m,dis_to_tree[MAXN][MAXN],startx,starty,endx,endy;<br><span class="hljs-type">int</span> vis[MAXN][MAXN];<br><span class="hljs-type">char</span> mp[MAXN][MAXN];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span><br>&#123;<br>	<span class="hljs-type">int</span> x,y,to_tree_dis,type;<br>&#125;;<br><span class="hljs-type">int</span> dx[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>&#125;,dy[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">search1</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">memset</span>(dis_to_tree,<span class="hljs-number">-1</span>,<span class="hljs-built_in">sizeof</span>(dis_to_tree));<br>	<span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));<br>	queue&lt;node&gt; q;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(mp[i][j]==<span class="hljs-string">&#x27;+&#x27;</span>)<br>			&#123;<br>				dis_to_tree[i][j]=<span class="hljs-number">0</span>;<br>				vis[i][j]=<span class="hljs-number">1</span>;<br>				q.<span class="hljs-built_in">push</span>(&#123;i,j,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>	&#123;<br>		node top=q.<span class="hljs-built_in">front</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> x=top.x,y=top.y;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)<br>		&#123;<br>			<span class="hljs-type">int</span> nx=x+dx[i],ny=y+dy[i];<br>			<span class="hljs-keyword">if</span>(nx&gt;=<span class="hljs-number">1</span>&amp;&amp;ny&gt;=<span class="hljs-number">1</span>&amp;&amp;nx&lt;=n&amp;&amp;ny&lt;=m&amp;&amp;!vis[nx][ny])<br>			&#123;<br>				dis_to_tree[nx][ny]=top.to_tree_dis<span class="hljs-number">+1</span>;<br>				vis[nx][ny]=<span class="hljs-number">1</span>;<br>				q.<span class="hljs-built_in">push</span>(&#123;nx,ny,dis_to_tree[nx][ny],<span class="hljs-number">0</span>&#125;);<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> dis)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">if</span>(dis==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>	<span class="hljs-built_in">memset</span>(vis,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(vis));<br>	queue&lt;node&gt; q;<br>	<span class="hljs-keyword">if</span>(dis_to_tree[startx][starty]&lt;dis||dis_to_tree[endx][endy]&lt;dis) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	q.<span class="hljs-built_in">push</span>(&#123;startx,starty,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;);<br>	q.<span class="hljs-built_in">push</span>(&#123;endx,endy,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>&#125;);<br>	vis[startx][starty]=<span class="hljs-number">1</span>;<br>	vis[endx][endy]=<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>	&#123;<br>		node top=q.<span class="hljs-built_in">front</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> x=top.x,y=top.y;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)<br>		&#123;<br>			<span class="hljs-type">int</span> nx=x+dx[i],ny=y+dy[i];<br>			<span class="hljs-keyword">if</span>(nx&lt;<span class="hljs-number">1</span>||ny&lt;<span class="hljs-number">1</span>||nx&gt;n||ny&gt;m) <span class="hljs-keyword">continue</span>;<br>			<span class="hljs-keyword">if</span>(dis_to_tree[nx][ny]&lt;dis) <span class="hljs-keyword">continue</span>;<br>			<span class="hljs-keyword">if</span>(!vis[nx][ny])<br>			&#123;<br>				vis[nx][ny]=top.type;<br>				q.<span class="hljs-built_in">push</span>(&#123;nx,ny,<span class="hljs-number">0</span>,top.type&#125;);<br>			&#125;<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(vis[nx][ny]!=top.type)<br>			&#123;<br>				<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cin&gt;&gt;n&gt;&gt;m;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)<br>		&#123;<br>			cin&gt;&gt;mp[i][j];<br>			<span class="hljs-keyword">if</span>(mp[i][j]==<span class="hljs-string">&#x27;V&#x27;</span>) startx=i,starty=j;<br>			<span class="hljs-keyword">if</span>(mp[i][j]==<span class="hljs-string">&#x27;J&#x27;</span>) endx=i,endy=j;<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">search1</span>();<br>	<span class="hljs-keyword">if</span>(startx==endx&amp;&amp;starty==endy)<br>	&#123;<br>		cout&lt;&lt;dis_to_tree[startx][starty]&lt;&lt;endl;<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	&#125;<br>	<span class="hljs-type">int</span> l=<span class="hljs-number">0</span>,r=<span class="hljs-number">1000</span>;<br>	<span class="hljs-keyword">while</span>(l&lt;r)<br>	&#123;<br>		<span class="hljs-type">int</span> mid=(l+r<span class="hljs-number">+1</span>)&gt;&gt;<span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">solve</span>(mid)) l=mid;<br>		<span class="hljs-keyword">else</span> r=mid<span class="hljs-number">-1</span>;<br>	&#125;<br>	cout&lt;&lt;l&lt;&lt;endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>线段树是一种二叉搜索树，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶子节点。</p>
+<p>使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度未O(log N)。而未优化的空间复杂度为2N，实际应用是一般还要开4N，的数组以免越界，因此有时需要离散化让空间压缩。</p>
+<p>树的形态一般如下：（引用自OI-WIKI）</p>
+<img src="https://oi-wiki.org/ds/images/segt1.svg" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
 
+<p>对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示区间为[a,(a+b)&#x2F;2]，它的右儿子表示的区间为[(a+b)&#x2F;2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。</p>
+<p>使用线段树可以快速查找某一个节点在若干条线段中出现的次数，时间复杂度为O(log 2N)。而为优化的空间复杂度为T(2N)，因此有时需要离散化进行空间压缩。</p>
+<p>图片举例（引用自CSDN la_alweq）</p>
+<p>每个节点存什么，节点下标是什么，如何建树？</p>
+<p><a target="_blank" rel="noopener" href="https://i-blog.csdnimg.cn/blog_migrate/8e64e93c7a590efe8490c43c052406df.png">pic_lnk</a></p>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/8e64e93c7a590efe8490c43c052406df.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+
+<p>该数组为a&#x3D;{1,8,6,4,3,5}，红色代表节点存储的区间，蓝色表示该区间内的最大值。</p>
+<p>每个叶子节点的值，就是数组的值，每个非叶子节点的度都为二，且左右两个孩子分别存储父亲一般的区间。</p>
+<p>每个父亲存储的值也就是两个孩子存储的值的最大值。</p>
+<p>如何快速找到非叶子节点的孩子以及非根节点的父亲？</p>
+<p>对于一个区间[l,r]来说，最重要的数据当然就是区间的做右端点l和r，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。</p>
+<p>这种方式用指针很好实现，定义两个左右子树递归即可，但是指针表示过于繁琐，而且不方便各种操作，大部分线段树都是使用数组进行表示，快速使用下标找到左右子树。</p>
+<p>图片举例（引用自CSDN la_alweq）</p>
+<p><a target="_blank" rel="noopener" href="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png">pic_lnk</a></p>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+
+<p>其中的绿色是下表编号。</p>
+<p>在最下排的编号从9直接到12，中间其实有两个空间。虽然没有使用，但还是存在。所以无优化的线段树开到4N才能防止RE。</p>
+<p>每个父亲和孩子下标的关系如下：</p>
+<ul>
+<li>每个左子树的下标都是偶数，右子树的下标都是奇数。</li>
+<li>父亲节点是儿子节点的一半，向下取整。</li>
+<li>儿子节点是父亲节点的两倍，或加一。</li>
+</ul>
+<p>把线段树看作一个完全二叉树，空节点也当作使用。</p>
+<p>根据奇怪的规律<del>（不支持md所以省略）</del>很简单就得到右子树节点为左子树节点数加一。</p>
+<p><del>（这一段是什么用处呢？）</del></p>
+<p>因为左子树都是偶数，所以我们常用位运算来寻寻找左右子树。</p>
+<ul>
+<li>k&lt;&lt;1，节点$k$的左子树下标。</li>
+<li>k&lt;&lt;1|1，节点$k$的右子树下标。</li>
+</ul>
+<p>假如要修改a[3]，则包含此值的节点都需要更新。</p>
+<p>根据二叉树的性质，log(k)个节点都需要进行更新，这也正是为什么每次更新的时间复杂度为O(log N)。</p>
+<p>可以发现无论更新那个叶子节点，最终都会回到根节点，而把这个往上推的过程逆过来就是从根节点进行递归处理。</p>
+<p>以下面的图为例（引用自CSDN la_alweq）</p>
+<p><a target="_blank" rel="noopener" href="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png">pic_lnk</a></p>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+
+<p>线段树的每个节点存储的都是一段区间的信息，如果刚好要查询这个节点，那么则直接返回这个节点的信息即可，比如直接查询[1,6]这个区间的最值，那么直接返回根节点信息13。</p>
+<p>若要查询区间[2,5]，那我们只需要查询[2,2]，[3,3]，[4,5]，三个区间。[4,4]，[5,5]不需要查找，包含在[4,5]中了。</p>
+<p>[2,5]一共五个区间，而且发现[4,5]这个区间已经包含了[4,4]，[5,5]两个子树的信息，所以需要查询的区间只有三个，是[2,2]，[3,3]，[4,5]。</p>
+<p>可以通过更新的思路想出来查询的思路，从根节点开始往下递归，时间复杂度O(logN)。</p>
+<p>线段树的区间更新使用差分的思想。</p>
+<p>传统上，对于区间[l,r]，可能每次都更新区间中的每个值，更新的复杂度将会是O(N log N)，造成浪费。</p>
+<p>在进行区间更新是，引用lazy标记，提高更新的效率。</p>
+<p>如果当前区间被需要修改的目标区间完全覆盖，则在被更新节点上打lazy标记，此区间不向下传导，这样的搭配使区间更新的操作和区间查询类似，复杂度为O(log N)。</p>
 
                 
               </div>
@@ -307,7 +346,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%C2%B7%E6%96%87%E5%8C%96%E8%AF%BE/" class="print-no-link">#学习·文化课</a>
       
     </div>
   
@@ -319,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【题解】p7775</div>
-      <div>http://j27egu.github.io/2025/07/23/【题解】洛谷P7775/</div>
+      <div>【学习笔记】线段树</div>
+      <div>http://j27egu.github.io/2025/07/25/【学习笔记】线段树/</div>
     </div>
     <div class="license-meta">
       
@@ -332,7 +371,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年7月23日</div>
+          <div>2025年7月25日</div>
         </div>
       
       
@@ -364,9 +403,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/25/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="【学习笔记】线段树">
+                      <a href="/2025/07/25/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P1729/" title="【题解】洛谷P1729">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【学习笔记】线段树</span>
+                        <span class="hidden-mobile">【题解】洛谷P1729</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -374,8 +413,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" title="欢迎来到我的博客">
-                        <span class="hidden-mobile">欢迎来到我的博客</span>
+                      <a href="/2025/07/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P7775/" title="【题解】p7775">
+                        <span class="hidden-mobile">【题解】p7775</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
