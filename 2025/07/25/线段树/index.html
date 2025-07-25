@@ -29,8 +29,9 @@
 <meta property="og:image" content="https://oi-wiki.org/ds/images/segt1.svg">
 <meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8e64e93c7a590efe8490c43c052406df.png">
 <meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png">
 <meta property="article:published_time" content="2025-07-25T03:01:47.000Z">
-<meta property="article:modified_time" content="2025-07-25T03:35:23.152Z">
+<meta property="article:modified_time" content="2025-07-25T03:45:10.946Z">
 <meta property="article:author" content="j27eGU">
 <meta property="article:tag" content="学习·文化课">
 <meta name="twitter:card" content="summary_large_image">
@@ -227,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          923 字
+          1.1k 字
         
       </span>
     
@@ -238,7 +239,7 @@
         
         
         
-          8 分钟
+          10 分钟
         
       </span>
     
@@ -297,6 +298,7 @@
 <p>如何快速找到非叶子节点的孩子以及非根节点的父亲？</p>
 <p>对于一个区间[l,r]来说，最重要的数据当然就是区间的做右端点l和r，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。</p>
 <p>这种方式用指针很好实现，定义两个左右子树递归即可，但是指针表示过于繁琐，而且不方便各种操作，大部分线段树都是使用数组进行表示，快速使用下标找到左右子树。</p>
+<p>图片举例（引用自CSDN la_alweq）</p>
 <img src="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
 
 <p>其中的绿色是下表编号。</p>
@@ -318,6 +320,13 @@
 <p>假如要修改a[3]，则包含此值的节点都需要更新。</p>
 <p>根据二叉树的性质，log(k)个节点都需要进行更新，这也正是为什么每次更新的时间复杂度为O(log N)。</p>
 <p>可以发现无论更新那个叶子节点，最终都会回到根节点，而把这个往上推的过程逆过来就是从根节点进行递归处理。</p>
+<p>以下面的图为例（引用自CSDN la_alweq）</p>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+
+<p>线段树的每个节点存储的都是一段区间的信息，如果刚好要查询这个节点，那么则直接返回这个节点的信息即可，比如直接查询[1,6]这个区间的最值，那么直接返回根节点信息13。</p>
+<p>若要查询区间[2,5]，那我们只需要查询[2,2]，[3,3]，[4,5]，三个区间。[4,4]，[5,5]不需要查找，包含在[4,5]中了。</p>
+<p>[2,5]一共五个区间，而且发现[4,5]这个区间已经包含了[4,4]，[5,5]两个子树的信息，所以需要查询的区间只有三个，是[2,2]，[3,3]，[4,5]。</p>
+<p>可以通过更新的思路想出来查询的思路，从根节点开始往下递归，时间复杂度O(logN)。</p>
 
                 
               </div>
