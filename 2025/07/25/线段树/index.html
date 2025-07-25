@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png">
 <meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png">
 <meta property="article:published_time" content="2025-07-25T03:01:47.000Z">
-<meta property="article:modified_time" content="2025-07-25T03:45:10.946Z">
+<meta property="article:modified_time" content="2025-07-25T03:48:49.512Z">
 <meta property="article:author" content="j27eGU">
 <meta property="article:tag" content="学习·文化课">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,6 +290,7 @@
 <p>使用线段树可以快速查找某一个节点在若干条线段中出现的次数，时间复杂度为O(log 2N)。而为优化的空间复杂度为T(2N)，因此有时需要离散化进行空间压缩。</p>
 <p>图片举例（引用自CSDN la_alweq）</p>
 <p>每个节点存什么，节点下标是什么，如何建树？</p>
+<p><a target="_blank" rel="noopener" href="https://i-blog.csdnimg.cn/blog_migrate/8e64e93c7a590efe8490c43c052406df.png">pic_lnk</a></p>
 <img src="https://i-blog.csdnimg.cn/blog_migrate/8e64e93c7a590efe8490c43c052406df.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
 
 <p>该数组为a&#x3D;{1,8,6,4,3,5}，红色代表节点存储的区间，蓝色表示该区间内的最大值。</p>
@@ -299,6 +300,7 @@
 <p>对于一个区间[l,r]来说，最重要的数据当然就是区间的做右端点l和r，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。</p>
 <p>这种方式用指针很好实现，定义两个左右子树递归即可，但是指针表示过于繁琐，而且不方便各种操作，大部分线段树都是使用数组进行表示，快速使用下标找到左右子树。</p>
 <p>图片举例（引用自CSDN la_alweq）</p>
+<p><a target="_blank" rel="noopener" href="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png">pic_lnk</a></p>
 <img src="https://i-blog.csdnimg.cn/blog_migrate/3e23057c9052f59c9a96cb7373d71b37.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
 
 <p>其中的绿色是下表编号。</p>
@@ -321,6 +323,7 @@
 <p>根据二叉树的性质，log(k)个节点都需要进行更新，这也正是为什么每次更新的时间复杂度为O(log N)。</p>
 <p>可以发现无论更新那个叶子节点，最终都会回到根节点，而把这个往上推的过程逆过来就是从根节点进行递归处理。</p>
 <p>以下面的图为例（引用自CSDN la_alweq）</p>
+<p><a target="_blank" rel="noopener" href="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png">pic_lnk</a></p>
 <img src="https://i-blog.csdnimg.cn/blog_migrate/f2de351965c5ecdab7a635025be5de68.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
 
 <p>线段树的每个节点存储的都是一段区间的信息，如果刚好要查询这个节点，那么则直接返回这个节点的信息即可，比如直接查询[1,6]这个区间的最值，那么直接返回根节点信息13。</p>
