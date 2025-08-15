@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>【题解】SC Sleeping Pairs</title>
+    <link href="/2025/08/15/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91SC%20Sleeping%20Pairs/"/>
+    <url>/2025/08/15/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91SC%20Sleeping%20Pairs/</url>
+    
+    <content type="html"><![CDATA[<ul><li>很明显，能移除的要立刻移除，它们会阻碍交换。</li><li>一共要移除 $n$ 张床，这需要 $n$ 点体力。</li><li>由于删除时总要保证上下铺人员类型一致，故上下铺 <code>X</code> 的个数要相等。设上下铺 <code>X</code> 的个数原来相差 $b$ 个，则交换一个 <code>XZ</code>（或 <code>ZX</code>）会使得某一边减少一个 <code>X</code>，而另一边增加一个 <code>X</code>，差值减少 $2$，故这需要 $\dfrac{b}{2}$ 点体力。</li><li>由样例 $1$ 可知，删除两个相邻的 <code>XZ</code> 和 <code>ZX</code> 需要 $1$ 点额外体力（删除所需的体力已经计算过了）。上一步完成后，<code>ZX</code> 和 <code>XZ</code> 一定都存在（否则两列 <code>X</code> 的个数不可能相同），因此总会有两行相邻的 <code>XZ</code> 和 <code>ZX</code>。设上一步结束后还剩下 $c$ 列，则这需要 $\dfrac{c}{2}$ 点体力。</li></ul><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br><span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;pairs.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, stdin);<br><span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;pairs.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, stdout);<br><span class="hljs-type">int</span> n;<br>cin &gt;&gt; n;<br><span class="hljs-type">int</span> b = <span class="hljs-number">0</span>, c = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>&#123;<br>string s;<br>cin &gt;&gt; s;<br><span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;XZ&quot;</span>) b++, c++;<br><span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;ZX&quot;</span>) b--, c++;<br>&#125;<br><span class="hljs-type">int</span> a = n + <span class="hljs-built_in">abs</span>(b) / <span class="hljs-number">2</span> + c / <span class="hljs-number">2</span>;<br>cout &lt;&lt; a &lt;&lt; endl;<br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>题解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【学习笔记】树上差分</title>
     <link href="/2025/07/29/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86/"/>
     <url>/2025/07/29/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86/</url>
