@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/08/15/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91SC%20Sleeping%20Pairs/" target="_self">
-          【题解】SC Sleeping Pairs
+        <a href="/2025/08/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2704/" target="_self">
+          【题解】洛谷P2704
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/08/15/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91SC%20Sleeping%20Pairs/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/08/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2704/" target="_self">
         <div>
-          很明显，能移除的要立刻移除，它们会阻碍交换。 一共要移除 $n$ 张床，这需要 $n$ 点体力。 由于删除时总要保证上下铺人员类型一致，故上下铺 X 的个数要相等。设上下铺 X 的个数原来相差 $b$ 个，则交换一个 XZ（或 ZX）会使得某一边减少一个 X，而另一边增加一个 X，差值减少 $2$，故这需要 $\dfrac{b}{2}$ 点体力。 由样例 $1$ 可知，删除两个相邻的 XZ 和
+          lnk 考虑到地形可以用二进制01表示，使用状压dp。 状压dp是采用十进制数字表示二进制的状态，实现状态的压缩。 如何设计状态，dp[层数][当前行的放置炮兵的情况][上一行放置炮兵的情况。 判断炮兵的放置情况要判断下面的情况是否合法：  左移右移一位两位相与的结果要为0 放置情况与地形相与的结果要为0  我们可以通过下面的代码来实现记录地形（grd数组）。 1234567for(int i=1
         </div>
       </a>
 
@@ -243,8 +243,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-08-15 18:08" pubdate>
-              2025-08-15
+            <time datetime="2025-08-21 14:32" pubdate>
+              2025-08-21
             </time>
           </div>
         
