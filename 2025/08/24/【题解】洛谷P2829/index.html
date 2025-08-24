@@ -19,22 +19,21 @@
   <meta name="author" content="j27eGU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="我们可以用1次dijkstra解决这个问题。 每次读入队首进行更新时有三种情况： 1.更新最短路、次短路。 2.能更新次短路，但不能更新最短路。 3.啥也不能更新。 用dis代表最短路，ldis代表次短路。 在q.top().dis+w&lt;dis[v]时可以更新最短路和次短路： 12ldis[v]&#x3D;dis[v];dis[v]&#x3D;q.top().dis+w;  在q.top().dis+w&gt;">
+    <meta name="description" content="这道题和P2865一样，都是最短路。 只是在读入时统计度数，更新时增加判断： 1if(v!&#x3D;1&amp;&amp;v!&#x3D;n&amp;&amp;deg[v]&lt;k)continue;  这道题就过了。 文章最短的一次…… 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】洛谷P2865">
-<meta property="og:url" content="http://j27egu.github.io/2025/08/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2865/index.html">
+<meta property="og:title" content="【题解】洛谷P2829">
+<meta property="og:url" content="http://j27egu.github.io/2025/08/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2829/index.html">
 <meta property="og:site_name" content="j27eGU&#39;s BLOG">
-<meta property="og:description" content="我们可以用1次dijkstra解决这个问题。 每次读入队首进行更新时有三种情况： 1.更新最短路、次短路。 2.能更新次短路，但不能更新最短路。 3.啥也不能更新。 用dis代表最短路，ldis代表次短路。 在q.top().dis+w&lt;dis[v]时可以更新最短路和次短路： 12ldis[v]&#x3D;dis[v];dis[v]&#x3D;q.top().dis+w;  在q.top().dis+w&gt;">
+<meta property="og:description" content="这道题和P2865一样，都是最短路。 只是在读入时统计度数，更新时增加判断： 1if(v!&#x3D;1&amp;&amp;v!&#x3D;n&amp;&amp;deg[v]&lt;k)continue;  这道题就过了。 文章最短的一次…… 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-23T15:54:11.000Z">
-<meta property="article:modified_time" content="2025-08-23T16:16:43.845Z">
+<meta property="article:published_time" content="2025-08-24T03:24:00.000Z">
+<meta property="article:modified_time" content="2025-08-24T03:31:15.630Z">
 <meta property="article:author" content="j27eGU">
-<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【题解】洛谷P2865 - j27eGU&#39;s BLOG</title>
+  <title>【题解】洛谷P2829 - j27eGU&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【题解】洛谷P2865"></span>
+            <span id="subtitle" data-typed-text="【题解】洛谷P2829"></span>
           
         </div>
 
@@ -211,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-23 23:54" pubdate>
-          2025年8月23日 晚上
+        <time datetime="2025-08-24 11:24" pubdate>
+          2025年8月24日 上午
         </time>
       </span>
     
@@ -223,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          406 字
+          360 字
         
       </span>
     
@@ -271,29 +270,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【题解】洛谷P2865</h1>
+            <h1 id="seo-header">【题解】洛谷P2829</h1>
             
             
               <div class="markdown-body">
                 
-                <p>我们可以用1次dijkstra解决这个问题。</p>
-<p>每次读入队首进行更新时有三种情况：</p>
-<p>1.更新最短路、次短路。</p>
-<p>2.能更新次短路，但不能更新最短路。</p>
-<p>3.啥也不能更新。</p>
-<p>用dis代表最短路，ldis代表次短路。</p>
-<p>在<code>q.top().dis+w&lt;dis[v]</code>时可以更新最短路和次短路：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">ldis[v]=dis[v];<br>dis[v]=q.<span class="hljs-built_in">top</span>().dis+w;<br></code></pre></td></tr></table></figure>
+                <p>这道题和<a href="https://j27egu.github.io/2025/08/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2865/">P2865</a>一样，都是最短路。</p>
+<p>只是在读入时统计度数，更新时增加判断：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(v!=<span class="hljs-number">1</span>&amp;&amp;v!=n&amp;&amp;deg[v]&lt;k)<span class="hljs-keyword">continue</span>;<br></code></pre></td></tr></table></figure>
 
-<p>在<code>q.top().dis+w&gt;dis[v]&amp;&amp;q.top().dis+w&lt;ldis[v]</code>时可以更新次短路：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">ldis[v]=q.<span class="hljs-built_in">top</span>().dis+w;<br></code></pre></td></tr></table></figure>
+<p>这道题就过了。</p>
+<p>文章最短的一次……</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAXN=<span class="hljs-number">5010</span>,inf=<span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">edge</span><br>&#123;<br>    <span class="hljs-type">int</span> v,w;<br>&#125;;<br>vector &lt;edge&gt; g[MAXN];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span><br>&#123;<br>    <span class="hljs-type">int</span> u,dis;<br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt;(<span class="hljs-type">const</span> node a)<span class="hljs-type">const</span> <br>    &#123;<br>        <span class="hljs-keyword">return</span> dis&gt;a.dis;<br>    &#125;<br>&#125;;<br><span class="hljs-type">int</span> dis[MAXN],ldis[MAXN],deg[MAXN],n,m,k;<br><span class="hljs-type">bool</span> vis[MAXN][MAXN];<br>priority_queue &lt;node&gt; q;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">memset</span>(dis,inf,<span class="hljs-built_in">sizeof</span>(dis));<br>    <span class="hljs-built_in">memset</span>(ldis,inf,<span class="hljs-built_in">sizeof</span>(ldis));<br>    dis[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br>    q.<span class="hljs-built_in">push</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;);<br>    <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>    &#123;<br>        node front=q.<span class="hljs-built_in">top</span>();<br>        q.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-type">int</span> u=front.u;<br>        <span class="hljs-keyword">if</span>(front.dis&gt;ldis[u]) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;g[u].<span class="hljs-built_in">size</span>();i++)<br>        &#123;<br>            <span class="hljs-type">int</span> v=g[u][i].v,w=g[u][i].w;<br>            <span class="hljs-keyword">if</span>(v!=<span class="hljs-number">1</span>&amp;&amp;v!=n&amp;&amp;deg[v]&lt;k)<span class="hljs-keyword">continue</span>;<span class="hljs-comment">//这里增加判断！！！</span><br>            <span class="hljs-keyword">if</span>(front.dis+w&lt;dis[v])<br>            &#123;<br>                ldis[v]=dis[v];<br>                dis[v]=front.dis+w;<br>                q.<span class="hljs-built_in">push</span>(&#123;v,dis[v]&#125;);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(front.dis+w&gt;dis[v]&amp;&amp;front.dis+w&lt;ldis[v])<br>            &#123;<br>                ldis[v]=front.dis+w;<br>                q.<span class="hljs-built_in">push</span>(&#123;v,ldis[v]&#125;);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;m&gt;&gt;k;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)<br>    &#123;<br>        <span class="hljs-type">int</span> u,v,w;<br>        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>        g[u].<span class="hljs-built_in">push_back</span>(&#123;v,w&#125;);<br>        g[v].<span class="hljs-built_in">push_back</span>(&#123;u,w&#125;);<br>        <span class="hljs-keyword">if</span>(!vis[u][v])<br>        &#123;<span class="hljs-comment">//这里统计度数</span><br>            <span class="hljs-comment">//vis记录这个边是否有记录过，防止重边</span><br>            vis[u][v]=vis[v][u]=<span class="hljs-number">1</span>;<br>            deg[u]++,deg[v]++;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">dijkstra</span>();<br>    <span class="hljs-keyword">if</span>(ldis[n]==inf)cout&lt;&lt;<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">else</span> cout&lt;&lt;ldis[n];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>哦，还有判断队首节点是否要继续更新的条件也要改成</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">front.dis&gt;ldis[u]<br></code></pre></td></tr></table></figure>
-
-<p>不然就会跳过更新次短路。</p>
-<p>以下是代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAXN=<span class="hljs-number">5010</span>,inf=<span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">edge</span><br>&#123;<br>	<span class="hljs-type">int</span> v,w;<br>&#125;;<br>vector &lt;edge&gt; g[MAXN];<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span><br>&#123;<br>	<span class="hljs-type">int</span> u,dis;<br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt;(<span class="hljs-type">const</span> node a)<span class="hljs-type">const</span> <br>	&#123;<br>		<span class="hljs-keyword">return</span> dis&gt;a.dis;<br>	&#125;<br>&#125;;<br><span class="hljs-type">int</span> dis[MAXN],ldis[MAXN],n,m;<br>priority_queue &lt;node&gt; q;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">memset</span>(dis,inf,<span class="hljs-built_in">sizeof</span>(dis));<br>	<span class="hljs-built_in">memset</span>(ldis,inf,<span class="hljs-built_in">sizeof</span>(ldis));<br>	dis[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br>	q.<span class="hljs-built_in">push</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;);<br>	<span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())<br>	&#123;<br>		node front=q.<span class="hljs-built_in">top</span>();<br>		q.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> u=front.u;<br>		<span class="hljs-keyword">if</span>(front.dis&gt;ldis[u])<span class="hljs-keyword">continue</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;g[u].<span class="hljs-built_in">size</span>();i++)<br>		&#123;<br>			<span class="hljs-type">int</span> v=g[u][i].v,w=g[u][i].w;<br>			<span class="hljs-keyword">if</span>(front.dis+w&lt;dis[v])<br>			&#123;<br>				ldis[v]=dis[v];<br>				dis[v]=front.dis+w;<br>				q.<span class="hljs-built_in">push</span>(&#123;v,dis[v]&#125;);<br>			&#125;<br>			<span class="hljs-keyword">if</span>(front.dis+w&gt;dis[v]&amp;&amp;front.dis+w&lt;ldis[v])<br>			&#123;<br>				ldis[v]=front.dis+w;<br>				q.<span class="hljs-built_in">push</span>(&#123;v,ldis[v]&#125;);<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>	cin&gt;&gt;n&gt;&gt;m;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)<br>	&#123;<br>		<span class="hljs-type">int</span> u,v,w;<br>		cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>		g[u].<span class="hljs-built_in">push_back</span>(&#123;v,w&#125;);<br>		g[v].<span class="hljs-built_in">push_back</span>(&#123;u,w&#125;);<br>	&#125;<br>	<span class="hljs-built_in">dijkstra</span>();<br>	cout&lt;&lt;ldis[n];<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -303,13 +292,6 @@
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
-      
-    </div>
-  
 </div>
 
 
@@ -318,8 +300,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【题解】洛谷P2865</div>
-      <div>http://j27egu.github.io/2025/08/23/【题解】洛谷P2865/</div>
+      <div>【题解】洛谷P2829</div>
+      <div>http://j27egu.github.io/2025/08/24/【题解】洛谷P2829/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +313,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月23日</div>
+          <div>2025年8月24日</div>
         </div>
       
       
@@ -363,18 +345,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/24/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2829/" title="【题解】洛谷P2829">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【题解】洛谷P2829</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2704/" title="【题解】洛谷P2704">
-                        <span class="hidden-mobile">【题解】洛谷P2704</span>
+                      <a href="/2025/08/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P2865/" title="【题解】洛谷P2865">
+                        <span class="hidden-mobile">【题解】洛谷P2865</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
