@@ -19,15 +19,15 @@
   <meta name="author" content="j27eGU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目传送门 由于我不会写高精度，只好打表。 lnk （正好有一篇博客就是记录e的10000位，直接ctrl+c，ctrl+v！） 可谓：  小巧玲珑，短小精悍。  代码： 123456789101112131415#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int main()&#123;	string s&#x3D;&quot;718281828459">
+    <meta name="description" content="题目传送门 由于我不会写高精度，只好打表。 lnk （正好有一篇博客就是记录$e$的$10000$位，直接ctrl+c，ctrl+v！） 可谓：  小巧玲珑，短小精悍。  代码： 123456789101112131415#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int main()&#123;	string s&#x3D;&quot;71828182">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】洛谷P1729">
 <meta property="og:url" content="http://j27egu.github.io/2025/07/25/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P1729/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="题目传送门 由于我不会写高精度，只好打表。 lnk （正好有一篇博客就是记录e的10000位，直接ctrl+c，ctrl+v！） 可谓：  小巧玲珑，短小精悍。  代码： 123456789101112131415#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int main()&#123;	string s&#x3D;&quot;718281828459">
+<meta property="og:description" content="题目传送门 由于我不会写高精度，只好打表。 lnk （正好有一篇博客就是记录$e$的$10000$位，直接ctrl+c，ctrl+v！） 可谓：  小巧玲珑，短小精悍。  代码： 123456789101112131415#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int main()&#123;	string s&#x3D;&quot;71828182">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-25T08:09:12.000Z">
-<meta property="article:modified_time" content="2025-08-31T14:55:52.878Z">
+<meta property="article:modified_time" content="2025-09-03T09:05:20.926Z">
 <meta property="article:author" content="j27eGU">
 <meta property="article:tag" content="休闲娱乐">
 <meta name="twitter:card" content="summary_large_image">
@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          125 字
+          126 字
         
       </span>
     
@@ -291,7 +291,7 @@
                 <p><a target="_blank" rel="noopener" href="http://luogu.com.cn/problem/P1729">题目传送门</a></p>
 <p>由于我不会写高精度，只好打表。</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Xsmyy/p/13458500.html">lnk</a></p>
-<p>（正好有一篇博客就是记录e的10000位，直接ctrl+c，ctrl+v！）</p>
+<p>（正好有一篇博客就是记录$e$的$10000$位，直接ctrl+c，ctrl+v！）</p>
 <p>可谓：</p>
 <blockquote>
 <p>小巧玲珑，短小精悍。</p>
@@ -437,6 +437,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -629,6 +635,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
