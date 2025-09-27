@@ -19,24 +19,22 @@
   <meta name="author" content="j27eGU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这里是记录所有学过的模板的（好像还不会背啊） Floydlink 给出一张由 $n$ 个点 $m$ 条边组成的无向图。 求出所有点对 $(i,j)$ 之间的最短路径。 输入 #1123454 41 2 12 3 13 4 14 1 1  输出 #112340 1 2 11 0 1 22 1 0 11 2 1 0  对于 $100%$ 的数据，$n \le 100$，$m \le 4500$，任意一">
+    <meta name="description" content="2025&#x2F;9&#x2F;27的入门组第二轮模拟题目的题解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【学习笔记】模板综合">
-<meta property="og:url" content="http://j27egu.github.io/2025/09/24/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%A8%A1%E6%9D%BF%E7%BB%BC%E5%90%88/index.html">
+<meta property="og:title" content="【题解】9&#x2F;27入门组模拟">
+<meta property="og:url" content="http://j27egu.github.io/2025/09/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%919-27%E5%85%A5%E9%97%A8%E7%BB%84%E6%A8%A1%E6%8B%9F/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="这里是记录所有学过的模板的（好像还不会背啊） Floydlink 给出一张由 $n$ 个点 $m$ 条边组成的无向图。 求出所有点对 $(i,j)$ 之间的最短路径。 输入 #1123454 41 2 12 3 13 4 14 1 1  输出 #112340 1 2 11 0 1 22 1 0 11 2 1 0  对于 $100%$ 的数据，$n \le 100$，$m \le 4500$，任意一">
+<meta property="og:description" content="2025&#x2F;9&#x2F;27的入门组第二轮模拟题目的题解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://j27egu.github.io/img/Note.png">
-<meta property="article:published_time" content="2025-09-24T12:37:37.000Z">
-<meta property="article:modified_time" content="2025-09-26T15:21:12.285Z">
+<meta property="article:published_time" content="2025-09-27T11:28:16.000Z">
+<meta property="article:modified_time" content="2025-09-27T13:26:08.703Z">
 <meta property="article:author" content="j27eGU">
-<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://j27egu.github.io/img/Note.png">
   
   
   
-  <title>【学习笔记】模板综合 - BLOG</title>
+  <title>【题解】9/27入门组模拟 - BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【学习笔记】模板综合"></span>
+            <span id="subtitle" data-typed-text="【题解】9/27入门组模拟"></span>
           
         </div>
 
@@ -231,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-09-24 20:37" pubdate>
-          2025年9月24日 晚上
+        <time datetime="2025-09-27 19:28" pubdate>
+          2025年9月27日 晚上
         </time>
       </span>
     
@@ -243,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          537 字
+          679 字
         
       </span>
     
@@ -254,7 +252,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -291,38 +289,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【学习笔记】模板综合</h1>
+            <h1 id="seo-header">【题解】9/27入门组模拟</h1>
             
             
               <div class="markdown-body">
                 
-                <p>这里是记录所有学过的模板的（好像还不会背啊）</p>
-<h1 id="Floyd"><a href="#Floyd" class="headerlink" title="Floyd"></a>Floyd</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B3647">link</a></p>
-<p>给出一张由 $n$ 个点 $m$ 条边组成的无向图。</p>
-<p>求出所有点对 $(i,j)$ 之间的最短路径。</p>
-<h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">3</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">4</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">1</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+                <p>虽然这次题还算<strong>简单</strong>，我认为我做的已经够了。</p>
+<h2 id="A-COCI-2006-2007-2-ABC"><a href="#A-COCI-2006-2007-2-ABC" class="headerlink" title="A.[COCI 2006&#x2F;2007 #2] ABC"></a>A.[COCI 2006&#x2F;2007 #2] ABC</h2><p>这题在模拟前我就已经做过了，这道题是个$\text{} \color{red}{入门}$。</p>
+<p><a target="_blank" rel="noopener" href="http://luogu.com.cn/problem/P4414">link</a></p>
+<p>直接按照题意模拟即可（这份代码是我去年昨天做的……）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> a[<span class="hljs-number">6</span>];<span class="hljs-built_in">memset</span>(a,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(a));<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">3</span>;i++)cin&gt;&gt;a[i];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">3</span><span class="hljs-number">-1</span>;i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">3</span>;j++)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(a[j]&lt;a[j<span class="hljs-number">+1</span>])<span class="hljs-built_in">swap</span>(a[j],a[j<span class="hljs-number">+1</span>]);<br>		&#125;<span class="hljs-comment">//细节冒泡排序</span><br>	&#125;<br>	<span class="hljs-type">int</span> A=a[<span class="hljs-number">3</span>],B=a[<span class="hljs-number">2</span>],C=a[<span class="hljs-number">1</span>];<br>	string x;<br>	cin&gt;&gt;x;<br>	<span class="hljs-keyword">if</span>(x==<span class="hljs-string">&quot;ABC&quot;</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,A,B,C);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x==<span class="hljs-string">&quot;ACB&quot;</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,A,C,B);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x==<span class="hljs-string">&quot;BCA&quot;</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,B,C,A);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x==<span class="hljs-string">&quot;BAC&quot;</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,B,A,C);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x==<span class="hljs-string">&quot;CAB&quot;</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,C,A,B);<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x==<span class="hljs-string">&quot;CBA&quot;</span>)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,C,B,A);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<h2 id="B-USACO1-3-滑雪课程设计Ski-Course-Design"><a href="#B-USACO1-3-滑雪课程设计Ski-Course-Design" class="headerlink" title="B.[USACO1.3] 滑雪课程设计Ski Course Design"></a>B.[USACO1.3] 滑雪课程设计Ski Course Design</h2><p><a target="_blank" rel="noopener" href="http://luogu.com.cn/problem/P3650">link</a></p>
+<p>这题是个$\text{} \color{orange}{普及-}$，用枚举的方法就可解决。</p>
+<p>就是遍历找出最低的海拔，然后枚举最低的海拔$L$即可，$n$很小的，只有$10 ^ 3$。</p>
+<ul>
+<li><p>若第$i$座山的海拔低于$L$，就加上$(L-a_i)^2$。</p>
+</li>
+<li><p>若第$i$座善的海拔与$L$的差</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Problem:Luogu P3650 [USACO1.3] 滑雪课程设计Ski Course Design</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,a[<span class="hljs-number">1010</span>],ans=<span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>),cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>	cin&gt;&gt;n;<br>	<span class="hljs-type">int</span> maxn=<span class="hljs-number">0</span>,minn=<span class="hljs-number">0x3f3f3f3f</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>	&#123;<br>		cin&gt;&gt;a[i];<br>		<span class="hljs-keyword">if</span>(a[i]&gt;maxn)maxn=a[i];<br>		<span class="hljs-keyword">if</span>(a[i]&lt;minn)minn=a[i];<br>	&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> l=<span class="hljs-number">0</span>;l&lt;=maxn<span class="hljs-number">+1</span>;l++)<br>	&#123;<br>		<span class="hljs-type">int</span> sum=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(a[i]&lt;l)sum+=(l-a[i])*(l-a[i]);<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(a[i]&gt;l<span class="hljs-number">+17</span>)sum+=(a[i]-l<span class="hljs-number">-17</span>)*(a[i]-l<span class="hljs-number">-17</span>);<br>		&#125;<br>		ans=<span class="hljs-built_in">min</span>(ans,sum);<br>	&#125;<br>	cout&lt;&lt;ans;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>对于 $100%$ 的数据，$n \le 100$，$m \le 4500$，任意一条边的权值 $w$ 是正整数且 $1 \leqslant w \leqslant 1000$。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//Floyd</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,m,dis[<span class="hljs-number">110</span>][<span class="hljs-number">110</span>];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">floyd</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">1</span>;k&lt;=n;k++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)<br>				dis[i][j]=<span class="hljs-built_in">min</span>(dis[i][j],dis[i][k]+dis[k][j]);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);<br>	<span class="hljs-built_in">memset</span>(dis,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(dis));<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)<br>	&#123;<br>		<span class="hljs-type">int</span> u,v,w;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;u,&amp;v,&amp;w);<br>		dis[u][v]=dis[v][u]=<span class="hljs-built_in">min</span>(dis[u][v],w);<br>	&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)dis[i][i]=<span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">floyd</span>();<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,dis[i][j]);<br>		<span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;&quot;</span>);<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="C-Roy-October之取石子"><a href="#C-Roy-October之取石子" class="headerlink" title="C.Roy&amp;October之取石子"></a>C.Roy&amp;October之取石子</h2><p><a target="_blank" rel="noopener" href="http://luogu.com.cn/problem/P4018">link</a></p>
+<p>通过找规律的方法我们可以知道当$n\ \text{mod}\ 6 &#x3D; 0$的时候结果就是Roy胜。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t;<br>    cin&gt;&gt;t;<br>    <span class="hljs-keyword">while</span>(t--)<br>    &#123;<br>        <span class="hljs-type">int</span> n;<br>        cin&gt;&gt;n;<br>        <span class="hljs-keyword">if</span>(n%<span class="hljs-number">6</span>)<span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;October wins!&quot;</span>);<br>        <span class="hljs-keyword">else</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;Roy wins!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="缩点"><a href="#缩点" class="headerlink" title="缩点"></a>缩点</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3387">link</a></p>
-<p>给定一个 $n$ 个点 $m$ 条边有向图，每个点有一个权值，求一条路径，使路径经过的点权值之和最大。你只需要求出这个权值和。</p>
-<p>允许多次经过一条边或者一个点，但是，重复经过的点，权值只计算一次。</p>
-<h3 id="输入-1-1"><a href="#输入-1-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">2 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">1</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="输出-1-1"><a href="#输出-1-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">2<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="ST-表-RMQ-问题"><a href="#ST-表-RMQ-问题" class="headerlink" title="ST 表 &amp; RMQ 问题"></a>ST 表 &amp; RMQ 问题</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3865">link</a></p>
-<p>给定一个长度为 $N$ 的数列，和 $ M $ 次询问，求出每一次询问的区间内数字的最大值。</p>
-<h3 id="输入-1-2"><a href="#输入-1-2" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">8 </span><span class="hljs-number">8</span><br><span class="hljs-symbol">9 </span><span class="hljs-number">3</span> <span class="hljs-number">1</span> <span class="hljs-number">7</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">0</span> <span class="hljs-number">8</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">5</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">7</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">8</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">8</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">7</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="输出-1-2"><a href="#输出-1-2" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs">9<br>9<br>7<br>7<br>9<br>8<br>7<br>9<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//ST表</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> lg[<span class="hljs-number">100010</span>],f[<span class="hljs-number">100010</span>][<span class="hljs-number">30</span>],n,m;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span> (ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)&#123;<span class="hljs-keyword">if</span> (ch==<span class="hljs-string">&#x27;-&#x27;</span>) f=<span class="hljs-number">-1</span>;ch=<span class="hljs-built_in">getchar</span>();&#125;<br>	<span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)&#123;x=x*<span class="hljs-number">10</span>+ch<span class="hljs-number">-48</span>;ch=<span class="hljs-built_in">getchar</span>();&#125;<br>	<span class="hljs-keyword">return</span> x*f;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	n=<span class="hljs-built_in">read</span>(),m=<span class="hljs-built_in">read</span>();<br>	lg[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)lg[i]=lg[i/<span class="hljs-number">2</span>]<span class="hljs-number">+1</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>		f[i][<span class="hljs-number">0</span>]=<span class="hljs-built_in">read</span>();<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=lg[n];j++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n-(<span class="hljs-number">1</span>&lt;&lt;j)<span class="hljs-number">+1</span>;i++)<br>			f[i][j]=<span class="hljs-built_in">max</span>(f[i][j<span class="hljs-number">-1</span>],f[i+(<span class="hljs-number">1</span>&lt;&lt;(j<span class="hljs-number">-1</span>))][j<span class="hljs-number">-1</span>]);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)<br>	&#123;<br>		<span class="hljs-type">int</span> l=<span class="hljs-built_in">read</span>(),r=<span class="hljs-built_in">read</span>(),k=lg[r-l<span class="hljs-number">+1</span>];<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,<span class="hljs-built_in">max</span>(f[l][k],f[r-(<span class="hljs-number">1</span>&lt;&lt;k)<span class="hljs-number">+1</span>][k]));<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="D-统计重复个数"><a href="#D-统计重复个数" class="headerlink" title="D.统计重复个数"></a>D.统计重复个数</h2><p><a target="_blank" rel="noopener" href="http://luogu.com.cn/problem/P10976">link</a></p>
+<p>这道题暴力就可以完成，但是作为一个模拟赛的题目，它只有一个测试点而且多组数据，<del>没法骗分</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Problem:Luogu P10976 统计重复个数</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br>ll n1,n2,ans;<br>string s1,s2,str1,str2;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">while</span>(cin&gt;&gt;s2&gt;&gt;n2&gt;&gt;s1&gt;&gt;n1)<br>	&#123;<br>		str1=str2=<span class="hljs-string">&quot;&quot;</span>;<br>		<span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">1</span>;i&lt;=n1;i++)str1+=s1;<br>		str2=s2;<br>		ll len1=str<span class="hljs-number">1.</span><span class="hljs-built_in">size</span>(),len2=str<span class="hljs-number">2.</span><span class="hljs-built_in">size</span>(),j=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">0</span>;i&lt;len1;i++)<br>			<span class="hljs-keyword">if</span>(str1[i]==str2[j])<br>				<span class="hljs-keyword">if</span>(j<span class="hljs-number">+1</span>==len2)ans++,j=<span class="hljs-number">0</span>;<br>				<span class="hljs-keyword">else</span> j++;<br>		cout&lt;&lt;ans/n2&lt;&lt;<span class="hljs-string">&#x27;\n&#x27;</span>;<br>		ans=<span class="hljs-number">0</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -336,7 +331,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="print-no-link">#学习笔记</a>
+        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
       
     </div>
   
@@ -348,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【学习笔记】模板综合</div>
-      <div>http://j27egu.github.io/2025/09/24/【学习笔记】模板综合/</div>
+      <div>【题解】9/27入门组模拟</div>
+      <div>http://j27egu.github.io/2025/09/27/【题解】9-27入门组模拟/</div>
     </div>
     <div class="license-meta">
       
@@ -361,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年9月24日</div>
+          <div>2025年9月27日</div>
         </div>
       
       
@@ -393,18 +388,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/09/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%919-27%E5%85%A5%E9%97%A8%E7%BB%84%E6%A8%A1%E6%8B%9F/" title="【题解】9/27入门组模拟">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【题解】9/27入门组模拟</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/09/04/%E3%80%90%E7%99%BE%E7%A7%91%E3%80%91%E7%A6%8F%E5%B7%9E%E6%9D%A8%E6%A1%A5%E4%B8%AD%E5%AD%A6/" title="【百科】福州杨桥中学">
-                        <span class="hidden-mobile">【百科】福州杨桥中学</span>
+                      <a href="/2025/09/24/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%A8%A1%E6%9D%BF%E7%BB%BC%E5%90%88/" title="【学习笔记】模板综合">
+                        <span class="hidden-mobile">【学习笔记】模板综合</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
