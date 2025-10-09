@@ -19,24 +19,24 @@
   <meta name="author" content="j27eGU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="10&#x2F;5提高组模拟赛的题解">
+    <meta name="description" content="A*搜索和k短路的学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】10-5提高组模拟">
-<meta property="og:url" content="http://j27egu.github.io/2025/10/06/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%9110-5%E6%8F%90%E9%AB%98%E7%BB%84%E6%A8%A1%E6%8B%9F/index.html">
+<meta property="og:title" content="【学习笔记】A*">
+<meta property="og:url" content="http://j27egu.github.io/2025/10/06/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91A/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="10&#x2F;5提高组模拟赛的题解">
+<meta property="og:description" content="A*搜索和k短路的学习笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://j27egu.github.io/img/Solution.png">
-<meta property="article:published_time" content="2025-10-06T04:40:18.000Z">
-<meta property="article:modified_time" content="2025-10-06T10:08:07.310Z">
+<meta property="og:image" content="http://j27egu.github.io/img/Note.png">
+<meta property="article:published_time" content="2025-10-06T10:26:17.000Z">
+<meta property="article:modified_time" content="2025-10-06T10:37:10.713Z">
 <meta property="article:author" content="j27eGU">
-<meta property="article:tag" content="题解">
+<meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://j27egu.github.io/img/Solution.png">
+<meta name="twitter:image" content="http://j27egu.github.io/img/Note.png">
   
   
   
-  <title>【题解】10-5提高组模拟 - BLOG</title>
+  <title>【学习笔记】A* - BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,7 +222,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【题解】10-5提高组模拟"></span>
+            <span id="subtitle" data-typed-text="【学习笔记】A*"></span>
           
         </div>
 
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-10-06 12:40" pubdate>
-          2025年10月6日 下午
+        <time datetime="2025-10-06 18:26" pubdate>
+          2025年10月6日 晚上
         </time>
       </span>
     
@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10 字
+          260 字
         
       </span>
     
@@ -256,7 +256,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -293,12 +293,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【题解】10-5提高组模拟</h1>
+            <h1 id="seo-header">【学习笔记】A*</h1>
             
             
               <div class="markdown-body">
                 
-                <p>因为还没订正完，先搁着</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>A*算法是一种在图形平面上，有多个路径中寻找一条从起点到终点的最短遍历路径，属于启发式搜索，因为它使用启发式的方法来计算图中的节点，从而减少实际的计算量，提高搜索效率。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>A*算法结合Dijkstra和Best-First-Search算法的特点 (<del>不是BFS</del>)。它用一个估价函数$f(n)&#x3D;g(n)+h(n)$，估算从起点到终点的总代价，$g(n)$表示起点到当前节点的代价，$h(n)$是当前节点到终点的启发式估价。</p>
+<p>A*通过扩展路径代价最小的节点来寻找目标点，它保证如果$h(n)$的估计值是准确的，那么找到的路径也是最短的。相较于Dijkstra算法一直遍历距离较近的点，在A*的算法中增加启发式函数$h(n)$会减少收录的数量，加快算法到终点的速度。</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p><img src="https://i-blog.csdnimg.cn/direct/88d7713d92384955aabf4739e6349139.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1379">八数码难题</a></p>
 
                 
               </div>
@@ -311,7 +315,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="print-no-link">#学习笔记</a>
       
     </div>
   
@@ -323,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【题解】10-5提高组模拟</div>
-      <div>http://j27egu.github.io/2025/10/06/【题解】10-5提高组模拟/</div>
+      <div>【学习笔记】A*</div>
+      <div>http://j27egu.github.io/2025/10/06/【学习笔记】A/</div>
     </div>
     <div class="license-meta">
       
@@ -368,9 +372,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/10/06/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91A/" title="【学习笔记】A*">
+                      <a href="/2025/10/06/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E6%B4%9B%E8%B0%B7P1379/" title="【题解】洛谷P1379">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【学习笔记】A*</span>
+                        <span class="hidden-mobile">【题解】洛谷P1379</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -378,8 +382,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/10/06/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%9110-5%E5%85%A5%E9%97%A8%E7%BB%84%E6%A8%A1%E6%8B%9F/" title="【题解】10-5入门组模拟">
-                        <span class="hidden-mobile">【题解】10-5入门组模拟</span>
+                      <a href="/2025/10/06/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%9110-5%E6%8F%90%E9%AB%98%E7%BB%84%E6%A8%A1%E6%8B%9F/" title="【题解】10-5提高组模拟">
+                        <span class="hidden-mobile">【题解】10-5提高组模拟</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
