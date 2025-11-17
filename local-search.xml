@@ -512,8 +512,6 @@
     
     <tags>
       
-      <tag>线段树</tag>
-      
       <tag>Floyd</tag>
       
       <tag>tarjan</tag>
@@ -534,6 +532,8 @@
       
       <tag>拓扑排序</tag>
       
+      <tag>线段树</tag>
+      
       <tag>树状数组</tag>
       
       <tag>字典树</tag>
@@ -541,6 +541,8 @@
       <tag>单调队列</tag>
       
       <tag>线性筛</tag>
+      
+      <tag>kmp</tag>
       
     </tags>
     
