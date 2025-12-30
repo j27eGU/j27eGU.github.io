@@ -512,8 +512,6 @@
     
     <tags>
       
-      <tag>线段树</tag>
-      
       <tag>Floyd</tag>
       
       <tag>tarjan</tag>
@@ -533,6 +531,8 @@
       <tag>LCA</tag>
       
       <tag>拓扑排序</tag>
+      
+      <tag>线段树</tag>
       
       <tag>树状数组</tag>
       
