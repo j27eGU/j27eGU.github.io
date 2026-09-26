@@ -1,0 +1,94 @@
+/* ============================================
+   文章目录（TOC）增强：让侧边目录更清晰醒目
+   ============================================ */
+
+/* 目录容器：毛玻璃背景，从正文中"浮"出来 */
+#toc {
+  visibility: visible !important;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: 0.7rem 0.8rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 目录标题栏 */
+#toc .toc-header {
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #214792;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #214792;
+}
+#toc .toc-header .iconfont {
+  margin-right: 0.25rem;
+}
+
+/* 目录主体：超高时内部滚动，避免占满整屏 */
+#toc .toc-body {
+  max-height: 72vh;
+  overflow-y: auto;
+}
+
+/* 目录列表：去掉默认圆点，规整缩进 */
+#toc .tocbot-list,
+#toc .tocbot-list ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+#toc .tocbot-list ul {
+  padding-left: 1rem;
+}
+
+/* 目录链接 */
+#toc .tocbot-link {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+  color: #4a5568;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  line-height: 1.6;
+}
+#toc .tocbot-link:hover {
+  color: #214792;
+  background: #f0f4ff;
+}
+
+/* 当前阅读位置：高亮显示 */
+#toc .tocbot-active-link {
+  color: #214792;
+  font-weight: 700;
+  background: #e8efff;
+  border-left-color: #214792;
+}
+
+/* ---------- 暗色模式适配 ---------- */
+[data-user-color-scheme="dark"] #toc {
+  background: rgba(35, 45, 63, 0.55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+[data-user-color-scheme="dark"] #toc .toc-header {
+  border-bottom-color: #5b7cbf;
+  color: #9db8e8;
+}
+[data-user-color-scheme="dark"] #toc .tocbot-link {
+  color: #a7b2c4;
+}
+[data-user-color-scheme="dark"] #toc .tocbot-link:hover {
+  color: #9db8e8;
+  background: #2e3a50;
+}
+[data-user-color-scheme="dark"] #toc .tocbot-active-link {
+  color: #9db8e8;
+  background: #33415c;
+  border-left-color: #5b7cbf;
+}
