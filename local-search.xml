@@ -45,11 +45,11 @@
     
     <tags>
       
-      <tag>ST表</tag>
+      <tag>树状数组</tag>
       
       <tag>线段树</tag>
       
-      <tag>树状数组</tag>
+      <tag>ST表</tag>
       
     </tags>
     
@@ -74,13 +74,13 @@
     
     <tags>
       
-      <tag>ST表</tag>
-      
-      <tag>线段树</tag>
+      <tag>归并排序</tag>
       
       <tag>树状数组</tag>
       
-      <tag>归并排序</tag>
+      <tag>线段树</tag>
+      
+      <tag>ST表</tag>
       
     </tags>
     
